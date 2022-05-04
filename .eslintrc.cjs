@@ -59,6 +59,8 @@ module.exports = {
     quotes: [2, 'single', 'avoid-escape'],
     'object-curly-spacing': ['error', 'always'],
     'keyword-spacing': 'off',
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/keyword-spacing': [
       'error',
       {
