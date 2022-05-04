@@ -3,30 +3,13 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-import 'jest-extended';
+import * as matchers from 'jest-extended';
 import 'jest-localstorage-mock';
 
-// jest.mock('react-i18next', () => ({
-//   ...(jest.requireActual('react-i18next') as Record<string, unknown>),
-//   useTranslation: () => ({
-//     t: (t: string) => t,
-//   }),
-// }));
-
+expect.extend(matchers);
 Object.defineProperty(navigator, 'language', {
   get: () => 'es-MX',
 });
-
-const timezoneMock = (zone: string) => {
-  const DateTimeFormat = Intl.DateTimeFormat;
-  jest
-    .spyOn(global.Intl, 'DateTimeFormat')
-    .mockImplementation(
-      (locale, options) => new DateTimeFormat(locale, { ...options, timeZone: zone }),
-    );
-};
-
-timezoneMock('America/Mexico_City');
 
 console.warn = jest.fn();
 console.error = jest.fn();
